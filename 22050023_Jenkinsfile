@@ -3,63 +3,43 @@ Scaffolding Configuration Settings
 */
 
 pipeline {
-
-    agent {
-        node {
-            label 'master'
-        }
-    }
-
-    tools { 
-        maven 'maven3'
-    }
-
-    options {
-buildDiscarderlogRotator( 
-daysToKeepStr: '15', 
-numToKeepStr: '10'
-            )
-    }
-
-    environment {
-        APP_NAME = "STUDENT_APP"
-        APP_ENV  = "DEV"
-    }
+    agent any
 
     stages {
-
-        stage('Cleanup Workspace') {
+        stage('Stage1_<your student id>') {
+            echo “S1_<your student id> : Environment Preparation Completed”
+        }
+		
+		stage('Stage2_<your student id>') {
+            docker run -d -p 4200:8800 container_name
+			docker rm container_name
+			docker run -it -p 42000:8080 -–name=container_name ubuntu:18.04 /bin/sh
+        }
+		
+		parallel{
+			stage('Stage3_<your student id>'){
+				echo “S3_<your student_id> : API Test Completed”
+			}
+			
+			stage('Stage4_<your student id>'){
+				echo “S4_<your student_id> : DAST Security Test Completed”
+			}
+		}
+        
+		stage('Stage5_<your student id>') {
+            echo “Prompt: Do you want to release the work?”
+        }
+		
+        stage('Stage6_<your student id>') {
             steps {
-cleanWs()
-sh"""
-                echo "Cleaned Up Workspace for ${APP_NAME}"
-                """
+                script {
+                    if Proceed {
+                        echo “Work Released - <your student id>”
+                    } else {
+                        Abort
+                    }
+                }
             }
         }
-
-        stage('Code Checkout') {
-            steps {
-                checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
-userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
-                ])
-            }
-        }
-
-        stage('Code Build') {
-            steps {
-sh'mvn install -Dmaven.test.skip=true'
-            }
-        }
-
-        stage('Printing All Global Variables') {
-            steps {
-sh"""
-                env
-                """
-            }
-        }
-
-    }   
+    }
 }
