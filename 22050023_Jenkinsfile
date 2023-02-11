@@ -6,39 +6,40 @@ pipeline {
     agent any
 
     stages {
-        stage('Stage1_<your student id>') {
-            echo “S1_<your student id> : Environment Preparation Completed”
+        stage('Stage1_22050023') {
+            echo “S1_22050023 : Environment Preparation Completed”
         }
 		
-		stage('Stage2_<your student id>') {
-            docker run -d -p 4200:8800 container_name
-			docker rm container_name
-			docker run -it -p 42000:8080 -–name=container_name ubuntu:18.04 /bin/sh
+	stage('Stage2_22050023') {
+            docker run -d -p 4200:8800 S2_22050023_Server 
+	    docker rm S2_22050023_Server
+	    docker run -it -p 42000:8080 -–name=S2_22050023_Server ubuntu:18.04 /bin/sh
         }
 		
-		parallel{
-			stage('Stage3_<your student id>'){
-				echo “S3_<your student_id> : API Test Completed”
-			}
+	parallel{
+	   stage('Stage3_22050023'){
+	       echo “S3_22050023 : API Test Completed”
+	    }
 			
-			stage('Stage4_<your student id>'){
-				echo “S4_<your student_id> : DAST Security Test Completed”
-			}
-		}
+	  stage('Stage4_22050023'){
+	       echo “S4_22050023 : DAST Security Test Completed”
+	    }
+	}
         
-		stage('Stage5_<your student id>') {
+	stage('Stage5_22050023') {
             echo “Prompt: Do you want to release the work?”
         }
 		
-        stage('Stage6_<your student id>') {
+        stage('Stage6_22050023') {
             steps {
                 script {
                     if Proceed {
-                        echo “Work Released - <your student id>”
-                    } else {
+                        echo “Work Released - 22050023”
+                         } 
+		    else {
                         Abort
+                         }
                     }
-                }
             }
         }
     }
