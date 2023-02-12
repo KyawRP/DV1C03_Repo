@@ -11,9 +11,28 @@ pipeline {
         }
 		
 	stage('Stage2_22050023') {
-            docker run -d -p 4200:8800 S2_22050023_Server 
-	    docker rm S2_22050023_Server
-	    docker run -it -p 42000:8080 -–name=S2_22050023_Server ubuntu:18.04 /bin/sh
+	    steps{
+		  docker run -d -it -p 42000:8080 --name=s2_22050023_server ubuntu:18.04 /bin/shsh
+		  docker start
+		  docker exec -it s2_22050023_server /bin/bash
+		  apt-get update
+                  apt-get install apache2
+		  exit
+		  docker commit s2_22050023_server 22050023_webimage
+		  
+		  docker run –dt 22050023_webimage /bin/bash
+		  docker rm s2_22050023_server
+		  /*  recreate new container after detached mode of container and removal */
+		  docker run -d -it -p 42000:8080 --name=s2_22050023_server ubuntu:18.04 /bin/shsh
+		  docker start
+		  docker exec -it s2_22050023_server /bin/bash
+		  apt-get update
+                  apt-get install apache2
+	          exit
+	    }
+	    (
+	          echo “S2_22050023 : Web Server Creation Completed”
+	    }
         }
 		
 	parallel{
