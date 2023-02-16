@@ -15,16 +15,15 @@ pipeline {
                    }/*stage1*/
         
         stage('Stage_2') {
-            steps {
-                    script {
-                    if (BRANCH_NAME == 'main') {
-                        echo 'Hello from main branch'
-                         }  
-		    else {
-                        sh "echo 'Hello from OK!'"
-                         }
-                    }/*script*/
-                        } /*steps*/
+		agent {
+                       docker {
+                           image 'gradle:6.7-jdk11'
+                    // Run the container on the node specified at the
+                    // top-level of the Pipeline, in the same workspace,
+                    // rather than on a new node entirely:
+                          reuseNode true
+                               }
+                      }
                    }/*stage1*/
              }/*stages*/
 }/*pipeline*/
