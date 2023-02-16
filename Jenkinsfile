@@ -11,8 +11,8 @@ pipeline {
                     sh"""
                     echo “S1_22050023 : Environment Preparation Completed”
                     """
-                          } /*steps*/
-                   }/*stage1*/
+                          } 
+                   }
         
         stage('Stage_2') {
 		agent {
@@ -24,9 +24,9 @@ pipeline {
                           reuseNode true
                                }
                       }
-                   }/*stage1*/
-             }/*stages*/
-}/*pipeline*/
+                   }
+             }
+}
 */
 
 pipeline {
