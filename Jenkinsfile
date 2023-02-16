@@ -4,21 +4,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Stage1_22050023') {
-	     sh"""
-                echo “S1_22050023 : Environment Preparation Completed”
-                """
-            
+
+        stage('Cleanup Workspace') {
+            steps {
+                    cleanWs()
+                    sh"""
+                    echo "Cleaned Up Workspace for ${APP_NAME}"
+                    """
+            }
         }
-		
-	stage('Stage2_22050023') {
-	    steps{
-		  sh"""
-	                echo “S2_22050023 : Web Server Creation Completed”
-			"""
-	         }
-      }
-    }
 }
   
   
