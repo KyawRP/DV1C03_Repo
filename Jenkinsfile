@@ -11,8 +11,9 @@ pipeline {
                     sh"""
                     echo "Cleaned Up Workspace for ${APP_NAME}"
                     """
-            }
-        }
+                                    }
+                   }
+             }
 }
   
   
