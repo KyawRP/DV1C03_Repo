@@ -16,10 +16,19 @@ pipeline {
         
         stage('Stage_2') {
             steps {
-                    sh"""
-                    echo “S1_22050023 : Environment Preparation Completed”
-                    """
-                          } /*steps*/
+                    script {
+                              if Proceed {
+                                    sh"""
+                                    echo “Work Released - 22050023”
+                                    """
+                                         } 
+		                       else {
+                                      sh""
+                                      Abort
+                                      ""
+                                    }
+                            }/*script*/
+                        } /*steps*/
                    }/*stage1*/
              }/*stages*/
 }/*pipeline*/
