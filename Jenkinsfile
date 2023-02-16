@@ -9,7 +9,7 @@ pipeline {
             steps {
                     /* cleanWs() */
                     sh"""
-                    echo "Cleaned Up Workspace for ${APP_NAME}"
+                    echo “S1_22050023 : Environment Preparation Completed”
                     """
                                     }
                    }
