@@ -17,17 +17,13 @@ pipeline {
         stage('Stage_2') {
             steps {
                     script {
-                              if Proceed {
-                                    sh"""
-                                    echo “Work Released - 22050023”
-                                    """
-                                         } 
-		                       else {
-                                      sh""
-                                      Abort
-                                      ""
-                                    }
-                            }/*script*/
+                    if (BRANCH_NAME == 'main') {
+                        echo 'Hello from main branch'
+                         }  
+		    else {
+                        sh "echo 'Hello from OK!'"
+                         }
+                    }/*script*/
                         } /*steps*/
                    }/*stage1*/
              }/*stages*/
