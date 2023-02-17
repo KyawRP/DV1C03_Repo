@@ -7,41 +7,34 @@ pipeline {
 
     stages {
         stage('Stage1_22050023') {
-            echo “S1_22050023 : Environment Preparation Completed”
+            echo "S1_22050023 : Environment Preparation Completed"
         }
 		
 	stage('Stage2_22050023') {
 	    steps{
-		    (
-	          echo “S2_22050023 : Web Server Creation Completed”
+	          echo "S2_22050023 : Web Server Creation Completed"
 	    }
         }
 		
 	parallel{
 	   stage('Stage3_22050023'){
-	       echo “S3_22050023 : API Test Completed”
-	    }
+	       echo "S3_22050023 : API Test Completed"
+	   }
 			
-	  stage('Stage4_22050023'){
-	       echo “S4_22050023 : DAST Security Test Completed”
-	    }
+	   stage('Stage4_22050023'){
+	       echo "S4_22050023 : DAST Security Test Completed"
+	   }
 	}
         
 	stage('Stage5_22050023') {
-            echo “Prompt: Do you want to release the work?”
+            echo "Prompt: Do you want to release the work?"
         }
 		
         stage('Stage6_22050023') {
             steps {
-                script {
-                    if Proceed {
-                        echo “Work Released - 22050023”
-                         } 
-		    else {
-                        Abort
-                         }
-                    }
-            }
+                     input('Do you want to proceed?') 
+                     echo "Work Released - 22050023"
+             }           
         }
     }
 }
