@@ -2,13 +2,15 @@ pipeline {
     agent any
 
     stages {
+        /*
         stage('Verify Branch') {
-            /*
+            
             steps {
                 echo "$main"
-            } */
+            } 
             echo "Verify Branch:)"
         }
+        */
         stage('Start build & test app') {
             steps {
                 sh(script:"""
