@@ -14,7 +14,7 @@ pipeline {
         stage('Start build & test app') {
             steps {
                 sh(script:"""
-                    docker version
+                    docker ps -a
                 """)
             }
             post {
