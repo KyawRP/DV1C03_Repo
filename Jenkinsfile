@@ -37,12 +37,12 @@ pipeline {
         //     }            
         // }
         
-//         stage('Exit'){
+         stage('Exit'){
 //             steps{
 //                 input('Do you want to proceed?')   
 //                 when{
 //                     not{
-//                          echo "Work Released - 22050023"  
+                          echo "Work Released - 22050023"  
 //                     }
 //                 }
 //             }
@@ -52,6 +52,6 @@ pipeline {
 //                  """)
 //             }
             
-//         }
+         }
     }
 }
