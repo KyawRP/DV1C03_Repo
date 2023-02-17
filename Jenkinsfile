@@ -3,9 +3,10 @@ pipeline {
 
     stages {
         stage('Verify Branch') {
+            /*
             steps {
                 echo "$main"
-            }
+            } */
         }
         stage('Start build & test app') {
             steps {
