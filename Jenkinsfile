@@ -7,6 +7,7 @@ pipeline {
             steps {
                 echo "$main"
             } */
+            echo "Verify Branch:)"
         }
         stage('Start build & test app') {
             steps {
