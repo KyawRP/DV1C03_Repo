@@ -15,8 +15,8 @@ pipeline {
        stage('Stage2_22050023') {
            steps {
                 sh(script:"""
-                    docker run -d -it -p 42000:8080 --name=rp_container rp_image /bin/sh
-                    docker rm -f rp_container
+                    docker run -d -it -p 42000:8080 --name=S2_22050023_server 22050023_webimage /bin/sh
+                    docker rm -f S2_22050023_server
                 """)
                 echo "S2_22050023 : Web Server Creation Completed"
            }
