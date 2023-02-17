@@ -37,21 +37,21 @@ pipeline {
         //     }            
         // }
         
-         stage('Exit'){
-            steps{
+//         stage('Exit'){
+//            steps{
 //                 input('Do you want to proceed?')   
-                 when{
-                     not{
-                          echo "Work Released - 22050023"  
-                     }
+//                 when{
+//                     not{
+//                          echo "Work Released - 22050023"  
+//                     }
 //               }
-            }
+//           }
 //             steps{
 //                 sh(script:"""
 //                      exit 1    
 //                  """)
 //             }
-            
-         }
+           
+//         }
     }
 }
