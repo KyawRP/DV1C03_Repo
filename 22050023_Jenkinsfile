@@ -18,12 +18,31 @@ pipeline {
                     docker run -d -it -p 42000:8080 --name=rp_container rp_image /bin/sh
                     docker rm -f rp_container
                 """)
+                echo "S2_22050023 : Web Server Creation Completed"
            }
        }
+       
+       parallel{
+           stage('Stage3_22050023') {
+               steps {
+                  echo "S3_22050023 : API Test Completed"
+               } 
+           }   
+           stage('Stage4_22050023') {
+               steps {
+                  echo "S4_22050023 : fileTest Completed"
+               } 
+           }   
+       }
 
+      stage('Stage5_22050023') {
+           steps {
+               input('Do you want to release the work?') 
+           } 
+       }
+       
        stage('Stage6_22050023'){
            steps{
-                 input('Do you want to proceed?')   
                  echo "Work Released - 22050023"  
            }
        }
