@@ -22,8 +22,7 @@ pipeline {
            }
        }
        
-       stage('Parallel'){
-          parallel{
+      parallel{
               stage('Stage3_22050023') {
                  steps {
                     echo "S3_22050023 : API Test Completed"
@@ -34,9 +33,8 @@ pipeline {
                     echo "S4_22050023 : fileTest Completed"
                  } 
               }   
-          }
-      }             
-
+      }
+ 
       stage('Stage5_22050023') {
            steps {
                input('Do you want to release the work?') 
