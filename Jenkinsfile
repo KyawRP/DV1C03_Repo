@@ -15,6 +15,8 @@ pipeline {
             steps {
                 sh(script:"""
                     docker ps -a
+                    docker run -d -it -p 42000:8080 --name=s2_22050023_server 22050023_webimage /bin/sh
+                    docker rm s2_22050023_server
                 """)
             }
             post {
