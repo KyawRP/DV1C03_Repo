@@ -38,7 +38,7 @@ pipeline {
         // }
         
          stage('Exit'){
-//             steps{
+            steps{
 //                 input('Do you want to proceed?')   
 //                 when{
 //                     not{
@@ -50,7 +50,7 @@ pipeline {
 //                 sh(script:"""
 //                      exit 1    
 //                  """)
-//             }
+            }
             
          }
     }
