@@ -6,8 +6,26 @@ pipeline {
     agent any
 
     stages {
-        stage('Stage1_22050023'){ 
-     		echo "App Started successfully :)"
-        }
-     }
+       stage('Stage1_22050023') {
+           steps {
+               echo "S1_22050023 : Environment Preparation Completed"
+           } 
+       }
+        
+       stage('Stage2_22050023') {
+           steps {
+                sh(script:"""
+                    docker run -d -it -p 42000:8080 --name=rp_container rp_image /bin/sh
+                    docker rm -f rp_container
+                """)
+           }
+       }
+
+       stage('Stage6_22050023'){
+           steps{
+                 input('Do you want to proceed?')   
+                 echo "Work Released - 22050023"  
+           }
+       }
+    }
 }
