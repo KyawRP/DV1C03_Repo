@@ -37,5 +37,19 @@ pipeline {
         //     }            
         // }
         
+        stage('Exit'){
+            steps{
+                input('Do you want to proceed?')   
+                when{
+                    not{
+                         echo “Work Released - <your student id>”   
+                    }
+                }
+                sh(script:"""
+                     exit 1    
+                 """)
+            }
+            
+        }
     }
 }
