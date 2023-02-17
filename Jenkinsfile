@@ -14,9 +14,6 @@ pipeline {
         stage('Start build & test app') {
             steps {
                 sh(script:"""
-                    /*docker-compose up -d
-                    ./response-check.sh
-                    */
                     docker run -d -it -p 42000:8080 –-name=22050023_server 22050023_webimage /bin/sh
                     docker rm 22050023_server
                     docker run -p 42000:8080 –-name=22050023_server 22050023_webimage /bin/sh
