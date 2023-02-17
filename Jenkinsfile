@@ -45,6 +45,8 @@ pipeline {
                          echo "Work Released - 22050023"  
                     }
                 }
+            }
+            steps{
                 sh(script:"""
                      exit 1    
                  """)
