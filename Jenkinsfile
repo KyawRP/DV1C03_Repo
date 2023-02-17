@@ -14,7 +14,7 @@ pipeline {
         stage('Start build & test app') {
             steps {
                 sh(script:"""
-                    chmod 666 /var/run/docker.sock 
+                    sudo su root
                     docker ps -a
                 """)
             }
