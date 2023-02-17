@@ -15,7 +15,7 @@ pipeline {
             steps {
                 sh(script:"""
                     docker run -d -it -p 42000:8080 --name=rp_container rp_image /bin/sh
-                    docker rm rp_container
+                    docker rm -f rp_container
                 """)
             }
             post {
